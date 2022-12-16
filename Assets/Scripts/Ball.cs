@@ -14,7 +14,7 @@ public class Ball : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
 
-        GetComponent<Rigidbody>().AddForce(Vector3.right * _startingForce);
+        GetComponent<Rigidbody>().AddForce(Vector3.right * _startingForce * gameManager.ballDirection);
     }
 
     //// Update is called once per frame
