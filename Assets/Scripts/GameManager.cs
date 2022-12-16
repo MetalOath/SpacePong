@@ -14,6 +14,12 @@ public class GameManager : MonoBehaviour
     private GameObject _playerOne, _playerTwo, _ball, _centerLine, _startGameButton, _playAgainButton;
 
     [SerializeField]
+    private GameObject _Obstacle, _SpeedBooster, _SpeedDamper, _Splitter;
+
+    [SerializeField]
+    private List<GameObject> _pickupSpawnLocations;
+
+    [SerializeField]
     private TextMeshProUGUI _playerOneScoreText, _playerTwoScoreText, _gameEndText;
 
     public int playerOneScore
@@ -34,7 +40,7 @@ public class GameManager : MonoBehaviour
             {
                 _ballDirection = 1;
 
-                Instantiate(_ball);
+                SpawnBall();
             }
 
             _playerOneScoreText.text = _playerOneScore.ToString();
@@ -61,7 +67,7 @@ public class GameManager : MonoBehaviour
             {
                 _ballDirection = -1;
 
-                Instantiate(_ball);
+                SpawnBall();
             }
 
             _playerTwoScoreText.text = _playerTwoScore.ToString();
@@ -109,7 +115,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        Instantiate(_ball);
+        SpawnBall();
         _playerOne.SetActive(true);
         _playerTwo.SetActive(true);
         _centerLine.SetActive(true);
@@ -119,5 +125,31 @@ public class GameManager : MonoBehaviour
     public void ResetGame()
     {
         SceneManager.LoadScene("Main");
+    }
+
+    public void SpawnBall()
+    {
+        Instantiate(_ball);
+    }
+
+    public void SpawnPickup()
+    {
+        Vector3 location = _pickupSpawnLocations[Mathf.FloorToInt(Random.Range(0, _pickupSpawnLocations.Count))].transform.position;
+
+        switch (Mathf.FloorToInt(Random.Range(0, 4)))
+        {
+            case 0:
+                Instantiate(_SpeedBooster, location, Quaternion.identity);
+                break;
+            case 1:
+                Instantiate(_SpeedDamper, location, Quaternion.identity);
+                break;
+            case 2:
+                Instantiate(_Obstacle, location, Quaternion.identity);
+                break;
+            case 3:
+                Instantiate(_Splitter, location, Quaternion.identity);
+                break;
+        }
     }
 }

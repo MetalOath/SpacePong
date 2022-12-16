@@ -7,6 +7,10 @@ TagManager:
   - Bounds
   - PlayerOneGoal
   - PlayerTwoGoal
+  - SpeedBooster
+  - SpeedDamper
+  - Splitter
+  - Obstacle
   layers:
   - Default
   - TransparentFX
