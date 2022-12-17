@@ -29,9 +29,9 @@ public class GameManager : MonoBehaviour
         {
             _playerOneScore = value;
 
-            if (_playerOneScore > 2)
+            if (_playerOneScore > 9)
             {
-                _playerOneScore = 3;
+                _playerOneScore = 10;
                 _gameEndText.text = "PLAYER ONE WINS!";
 
                 EndGame();
@@ -56,9 +56,9 @@ public class GameManager : MonoBehaviour
         {
             _playerTwoScore = value;
 
-            if (_playerTwoScore > 2)
+            if (_playerTwoScore > 9)
             {
-                _playerTwoScore = 3;
+                _playerTwoScore = 10;
                 _gameEndText.text = "PLAYER TWO WINS!";
 
                 EndGame();
