@@ -59,7 +59,7 @@ public class Ball : MonoBehaviour
         {
             Destroy(other.gameObject);
 
-            GetComponent<Rigidbody>().AddForce(GetComponent<Rigidbody>().velocity * 0.5f);
+            GetComponent<Rigidbody>().AddForce(GetComponent<Rigidbody>().velocity * -0.5f);
         }
 
         if (other.CompareTag("Splitter"))
